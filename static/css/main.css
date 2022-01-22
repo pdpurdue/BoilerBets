@@ -7,10 +7,7 @@
   
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(203, 169, 17), rgba(0, 0, 0));
-    top:76px;
-    right:0px;
-    bottom:0px;
-    left:0px;
+   
   }
 .navbar-custom {
     background-color: black;
