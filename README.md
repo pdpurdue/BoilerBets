@@ -1,2 +1,2 @@
 # BoilerBets
-## Running Procedures
+## How to run
