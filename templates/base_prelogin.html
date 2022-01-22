@@ -12,14 +12,13 @@
           {% endblock %}
         </head>
 <body>
-    
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        <img src="{{url_for('static', filename='tab_icon.png')}}" width="30" height="30" alt="">
+  <nav class="navbar navbar-custom">
+      <a class="navbar-brand" href="/">
+        <img src="{{url_for('static', filename='tab_icon.png')}}" width="200" height="100" style="margin-left: 15px;" alt="">
       </a>
-    </nav>
+  </nav>
     {% block body %} 
-    
+
     {% endblock %}
 </body>
 </html>
