@@ -1,7 +1,8 @@
 {% extends 'base_prelogin.html' %}
 {% block head %}
-    <title>Boiler Bets Login</title>
+    <title>Boiler Bets Sign up</title>
 {% endblock %}
+
 {% block body %}
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
@@ -12,30 +13,34 @@
   
               <div class="mb-md-5 mt-md-4 pb-5">
   
-                <h2 class="fw-bold mb-2 text-uppercase">Login to Boiler Bets</h2>
-                <p class="text-white-50 mb-5">Enter your credentials or create an account</p>
+                <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                <p class="text-white-50 mb-5">Enter your credentials to sign up</p>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput" style="color:black;">First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput" style="color:black;">Last Name</label>
+                </div>
   
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput" style="color:black;">Email address</label>
                 </div>
   
-                <div class="form-floating">
+                <div class="form-floating mb-3">
                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword" style="color:black;">Password</label>
                 </div>
-  
+
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Confirm Password">
+                    <label for="floatingPassword" style="color:black;">Confirm Password</label>
+                </div>
                 <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-  
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
-  
-  
+                <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
               </div>
-  
-              <div>
-                <p class="mb-0">Don't have an account? <a href="/signup" class="text-white-50 fw-bold">Sign Up</a></p>
-              </div>
-  
             </div>
           </div>
         </div>
