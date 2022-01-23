@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+import random
 
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ class Users(db.Model):
     email =  db.Column(db.String(200), nullable=False)
     password =  db.Column(db.String(200), nullable=False)
     confirm = db.Column(db.String(200), nullable=False)
+    boilerBucks = db.Column(db.Integer, primary_key = False)
     def __repr__(self):
         return self.id
 
@@ -65,8 +67,9 @@ def signup():
         task_email = request.form['email']
         task_password = request.form['password']
         task_confirm = request.form['confirm']
+        task_boilerBucks = random.randrange(300,3000)
 
-        new_task = Users(fName=task_fName, lName = task_lName, pn = task_pn, email = task_email, password = task_password, confirm = task_confirm)
+        new_task = Users(fName=task_fName, lName = task_lName, pn = task_pn, email = task_email, password = task_password, confirm = task_confirm, boilerBucks = task_boilerBucks)
 
         try:
             db.session.add(new_task)
@@ -84,7 +87,9 @@ def forgot_password():
 
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    ran = [1,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,0,1]
+    tasks = Users.query.order_by(Users.boilerBucks.desc()).all()
+    return render_template('index.html',tasks=tasks,ran=ran)
 
 @app.route('/nfl')
 def nfl():
