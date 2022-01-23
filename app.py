@@ -71,7 +71,7 @@ def signup():
         task_password = request.form['password']
         task_confirm = request.form['confirm']
         if (task_confirm != task_password):
-            return redirect('/')
+            return redirect('/signup')
         task_boilerBucks = random.randrange(300,3000)
         new_task = Users(fName=task_fName, lName = task_lName, pn = task_pn, email = task_email, password = task_password, confirm = task_confirm, boilerBucks = task_boilerBucks)
         global global_email
@@ -87,7 +87,7 @@ def signup():
 @app.route('/forgot_password')
 def forgot_password():
     return render_template('forgot_password.html')
-@app.route('/index')
+@app.route('/index',methods=['GET','POST'])
 def index():
     ran = [1,0,0,0,1,0,1,0,0,0,1,0,1,1,1,1,0,1]
     tasks = Users.query.order_by(Users.boilerBucks.desc()).all()
@@ -100,13 +100,21 @@ def nba():
         for x in result:
             if (x.email == global_email):
                 task_sport = "NBA"
-                task_prediction = "CHI"
-                task_betAmount = 72
+                task_prediction = request.form['BETTING']
+                task_betAmount = request.form['betAmount']
                 task_email = global_email
-                task_payout = 105
+                task_payout = 0
+                if (task_prediction == "CHIM"):
+                    task_payout = int(1.24 * float(task_betAmount) + float(task_betAmount))
+                elif task_prediction == "ORLM":
+                    task_payout = int(.76 * float(task_betAmount) + float(task_betAmount))
+                elif task_prediction == "CHIS":
+                    task_payout = 2 * int(task_betAmount)
+                elif task_prediction == "ORLS":
+                    task_payout = 2 * int(task_betAmount)
                 new_task = Bets(sport = task_sport, email = task_email, prediction = task_prediction, betAmount = task_betAmount, payout = task_payout)
                 try:
-                    x.boilerBucks -= task_betAmount
+                    x.boilerBucks -= int(task_betAmount)
                     db.session.add(new_task)
                     db.session.commit()
                     return redirect('/index')
@@ -150,6 +158,7 @@ def betlist():
     result = db.session.query(Users).all()
     tasks = db.session.query(Bets).all()
     return render_template('betlist.html',tasks=tasks,global_email=global_email)
-    
+
+
 if __name__ == '__main__':
     app.run(debug=True)

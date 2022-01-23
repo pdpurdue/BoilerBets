@@ -3,9 +3,9 @@
 {% extends 'base.html' %}
 {% block head %}
     <title>NBA Bets</title>
+    
 {% endblock %}
 {% block body %}
-
         <!-- Section-->
         <section class="py-5">
            
@@ -95,32 +95,33 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <div class="form">
+            <form action="" method = "POST">
+               
+
         <div class="modal-body">
             <div class="row">
                 <div class="col-lg-12">
                     <table class="table-striped table-responsive table-hover result-point">
                         <thead class="point-table-head">
                             <tr>
-                                <th class="text-center">Team</th>
-                                <th class="text-center">Spread</th>
-                                <th class="text-center">Money</th>
-                                <th class="text-center">Total</th>
+                                
                             </tr>
                         </thead>
                         <tbody class="text-center">
                             <tr>
-                                <td>Bulls</td>
-                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off"> +3</button></td>
-                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">+124</button></td>
-                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">O 217</button></td>
-                            </tr>
-                            <tr>
-                                <td>Magic</td>
-                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">-3</button></td>
-                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">-126</button>
-                                
-                                </td>
-                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">U 217</button></td>
+                                <label for="bets">Choose a betting option:</label>
+                                <select name= "BETTING" id="BETTING">
+                                    <option value="CHIM" name = "CHIM" id = "CHIM">Chicago Moneyline +146</option>
+                                    <option value="ORLM" name = "ORLM" id = "ORLM">Orlando Moneyline -146</option>
+                                    <option value="CHIS" name = "CHIS" id = "CHIS">Chicago Spread +3</option>
+                                    <option value="ORLS" name = "ORLS" id = "ORLS" >Orlando Spread - 3</option>
+                                </select>
+
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="betAmount" name = "betAmount" placeholder="$">
+                                    <label for="floatingInput" style="color:black;">Enter an amount</label>
+                                </div>
                             </tr>
                         </tbody>
                     </table>
@@ -128,13 +129,12 @@
             </div>
             <span>
 
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="betAmount" name = "betAmount" placeholder="$">
-                <label for="floatingInput" style="color:black;">Enter an amount</label>
-            </div>
-            <button type="button" class="btn btn-outline-primary">Submit</button>
+            
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
             </span>
         </div>
+        </form>
+    </div>
       </div>
     </div>
   </div>
@@ -352,7 +352,6 @@
                             </div>
                         </div>
                     </div>
-                  
                 </div>
             </div>
         </section>
