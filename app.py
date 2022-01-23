@@ -6,7 +6,7 @@ import random
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///master.db'
 db = SQLAlchemy(app)
-global_user = ""
+
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -51,9 +51,6 @@ def login():
             if (x.email == user_email):
                 if (len(user_email) > 0 and len(user_pass) > 0):
                     if (x.password == user_pass):
-                        print(x.fName)
-                        print(x.lName)
-                        global_user = x.fName + x.lName
                         return redirect('/index')
                     else:
                         return render_template('incorrect_login.html')
@@ -109,7 +106,6 @@ def incorrect_login():
             if (x.email == user_email):
                 if (len(user_email) > 0 and len(user_pass) > 0):
                     if (x.password == user_pass):
-                        global_user = x.fName + x.lName
                         return redirect('/index')
                     else:
                         return redirect('/incorrect_login')
