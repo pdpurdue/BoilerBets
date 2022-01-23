@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+
+{% block head %}
+    <title>Home Page</title>
+{% endblock %}
+
+{% block body %}
+
+<section class="content-info">
+    <div class="container paddings-mini">
+        <h3>
+            YOUR BETS
+          </h3>
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table-striped table-responsive table-hover result-point">
+                    <thead class="point-table-head">
+                        <tr>
+                            <th class="text-center">User</th>
+                            <th class="text-center">Sport</th>
+                            <th class="text-center">Prediction</th>
+                            <th class="text-center">Amount Bet</th>
+
+                            <tbody class="text-center">
+                                
+                                {% for task in tasks%}
+                                   
+                                        {%if task.email == global_email%}
+                                         <tr>
+                                            <td class="text-left number"> {{task.email}} <i class="fa fa-caret-up" aria-hidden="true"></i></td> 
+                                            <td>{{task.sport}}</td>
+                                            <td>{{task.prediction}}</td>
+                                            <td>{{task.betAmount}} </td>
+                                        {%endif%}
+                                    </tr>   
+                                {% endfor %}
+                            </tbody>
+               
+                        </tr>
+                    </thead>
+                    
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

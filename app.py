@@ -19,6 +19,7 @@ class Users(db.Model):
     password =  db.Column(db.String(200), nullable=False)
     confirm = db.Column(db.String(200), nullable=False)
     boilerBucks = db.Column(db.Integer, primary_key = False)
+    db.session.commit()
     def __repr__(self):
         return self.id
 class Bets(db.Model):
@@ -28,7 +29,6 @@ class Bets(db.Model):
     betAmount = db.Column(db.Integer, primary_key=False)
     payout =  db.Column(db.Integer, primary_key=False)
     email =  db.Column(db.String(200), nullable=False)
-
     def __repr__(self):
         return self.id    
 class Games(db.Model):
@@ -38,6 +38,7 @@ class Games(db.Model):
     team2 = db.Column(db.String(200), nullable=False)
     isDone =  db.Column(db.String(200), nullable=False)
     winner =  db.Column(db.String(200), nullable=False)
+    db.session.commit()
     def __repr__(self):
         return self.id
 @app.route('/', methods = ['GET', 'POST'])
