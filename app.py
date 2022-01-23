@@ -91,6 +91,10 @@ def incorrect_login():
 def nba():
     return render_template('nba.html')
 
+@app.route('/nhl')
+def nhl():
+    return render_template('nhl.html')
+
 @app.route('/premier')
 def premier():
     return render_template('premier.html')
