@@ -51,6 +51,7 @@ def forgot_password():
 
 @app.route('/')
 def index():
+    # get the user information and list them
     return render_template('index.html')
 
 @app.route('/nfl')
