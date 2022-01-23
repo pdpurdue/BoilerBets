@@ -6,30 +6,49 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///master.db'
 db = SQLAlchemy(app)
 
-class Todo(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fName =  db.Column(db.String(200), nullable=False)
     lName =  db.Column(db.String(200), nullable=False)
     pn =  db.Column(db.String(200), nullable=False)
     email =  db.Column(db.String(200), nullable=False)
-
     password =  db.Column(db.String(200), nullable=False)
     confirm = db.Column(db.String(200), nullable=False)
-
     def __repr__(self):
         return self.id
 
-@app.route('/login', methods = ['GET', 'POST'])
+class Bets(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sport =  db.Column(db.String(200), nullable=False)
+    prediction =  db.Column(db.String(200), nullable=False)
+    betAmount = db.Column(db.Integer, primary_key=False)
+    payout =  db.Column(db.Integer, primary_key=False)
+    email =  db.Column(db.String(200), nullable=False)
+    def __repr__(self):
+        return self.id    
+
+
+class Games(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sport =  db.Column(db.String(200), nullable=False)
+    team1 =  db.Column(db.String(200), nullable=False)
+    team2 = db.Column(db.String(200), nullable=False)
+    isDone =  db.Column(db.String(200), nullable=False)
+    winner =  db.Column(db.String(200), nullable=False)
+    def __repr__(self):
+        return self.id
+
+@app.route('/', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
         user_email = request.form['email']
         user_pass = request.form['password']
-        result = db.session.query(Todo).all()
+        result = db.session.query(Users).all()
         for x in result: 
             if (x.email == user_email):
                 if (len(user_email) > 0 and len(user_pass) > 0):
                     if (x.password == user_pass):
-                        return redirect('/')
+                        return redirect('/index')
                     else:
                         return render_template('incorrect_login.html')
                 else:
@@ -47,12 +66,12 @@ def signup():
         task_password = request.form['password']
         task_confirm = request.form['confirm']
 
-        new_task = Todo(fName=task_fName, lName = task_lName, pn = task_pn, email = task_email, password = task_password, confirm = task_confirm)
+        new_task = Users(fName=task_fName, lName = task_lName, pn = task_pn, email = task_email, password = task_password, confirm = task_confirm)
 
         try:
             db.session.add(new_task)
             db.session.commit()
-            return redirect('/login')
+            return redirect('/')
         except:
             return 'There was an issue creating your account.'
 
@@ -63,7 +82,7 @@ def signup():
 def forgot_password():
     return render_template('forgot_password.html')
 
-@app.route('/')
+@app.route('/index')
 def index():
     return render_template('index.html')
 
@@ -76,7 +95,7 @@ def incorrect_login():
     if request.method == 'POST':
         user_email = request.form['email']
         user_pass = request.form['password']
-        result = db.session.query(Todo).all()
+        result = db.session.query(Users).all()
         for x in result: 
             if (x.email == user_email):
                 if (len(user_email) > 0 and len(user_pass) > 0):
