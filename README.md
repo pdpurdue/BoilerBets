@@ -8,3 +8,15 @@ This repo has been updated to work with Python v3.7.6 and up.
 2. Construct your virtual environment
 
 `virtualenv env`
+
+3. Activate the virtual environment
+
+`source env/bin/activate`
+
+4. Install the dependencies
+
+`pip install -r requirements.txt`
+
+5. Locally run the Flask application
+
+`python3 app.py`
