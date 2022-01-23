@@ -70,6 +70,8 @@ def signup():
         task_email = request.form['email']
         task_password = request.form['password']
         task_confirm = request.form['confirm']
+        if (task_confirm != task_password):
+            return redirect('/')
         task_boilerBucks = random.randrange(300,3000)
         new_task = Users(fName=task_fName, lName = task_lName, pn = task_pn, email = task_email, password = task_password, confirm = task_confirm, boilerBucks = task_boilerBucks)
         global global_email
