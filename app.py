@@ -120,6 +120,10 @@ def nba():
 def nhl():
     return render_template('nhl.html')
 
+@app.route('/ufc')
+def ufc():
+    return render_template('ufc.html')
+
 @app.route('/premier')
 def premier():
     return render_template('premier.html')
