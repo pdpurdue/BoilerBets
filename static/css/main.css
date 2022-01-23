@@ -1,14 +1,14 @@
+html, body {
+  margin:0px;
+  height:100%;
+}
 .gradient-custom {
-    /* fallback for old browsers */
-    background: #cba911;
-  
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgb(203, 169, 17), rgb(0, 0, 0));
-  
+    height: 100%;
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(203, 169, 17), rgba(0, 0, 0));
    
   }
+
 .navbar-custom {
     background-color: black;
     align-items:center;
