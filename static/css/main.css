@@ -75,3 +75,7 @@ table tr td img {
   margin-top: 1px;
   border: 1px solid #dedede
 }
+
+.modal-lg {
+  max-width: 80% !important;
+}

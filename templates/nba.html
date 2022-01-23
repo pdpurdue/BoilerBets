@@ -87,7 +87,7 @@
   
   <!-- Modal -->
   <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Chicago Bulls vs. Orlando Magic</h5>
@@ -96,7 +96,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <div class="row" style="padding-bottom: 10px;">
+            <div class="row">
                 <div class="col-lg-12">
                     <table class="table-striped table-responsive table-hover result-point">
                         <thead class="point-table-head">
@@ -110,34 +110,30 @@
                         <tbody class="text-center">
                             <tr>
                                 <td>Bulls</td>
-                                <td>+3</td>
-                                <td>+124</td>
-                                <td>O 217</td>
+                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off"> +3</button></td>
+                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">+124</button></td>
+                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">O 217</button></td>
                             </tr>
                             <tr>
                                 <td>Magic</td>
-                                <td>-3</td>
-                                <td>-126</td>
-                                <td>U 217</td>
+                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">-3</button></td>
+                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">-126</button>
+                                
+                                </td>
+                                <td><button type="button" class="btn btn-outline-dark" data-toggle="button" aria-pressed="false" autocomplete="off">U 217</button></td>
                             </tr>
                         </tbody>
                     </table>
-                    
-                    <span>
-                        <div class="form">
-                            <form action = "" method = "POST">
-                                <button type="submit" class="btn btn-danger">Bet on Chicago</button>
-                                <button type="button" class="btn btn-primary">Bet on Orlando</button>
-                            </form>
-                        </div>
-                    </span>
-                       
                 </div>
             </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline-dark mt-auto">Save changes</button>
+            <span>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="betAmount" name = "betAmount" placeholder="$">
+                <label for="floatingInput" style="color:black;">Enter an amount</label>
+            </div>
+            <button type="button" class="btn btn-outline-primary">Submit</button>
+            </span>
         </div>
       </div>
     </div>
