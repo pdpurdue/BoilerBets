@@ -31,7 +31,7 @@ def login():
                     if (x.password == user_pass):
                         return redirect('/')
                     else:
-                        return render_template('login.html')
+                        return render_template('incorrect_login.html')
                 else:
                     return redirect('/incorrect_login')
         return redirect('/incorrect_login')
