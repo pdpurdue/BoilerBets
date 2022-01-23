@@ -21,6 +21,20 @@ class Todo(db.Model):
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        user_email = request.form['email']
+        user_pass = request.form['password']
+        result = db.session.query(Todo).all()
+        for x in result: 
+            if (x.email == user_email):
+                if (len(user_email) > 0 and len(user_pass) > 0):
+                    if (x.password == user_pass):
+                        return redirect('/')
+                    else:
+                        return render_template('login.html')
+                else:
+                    return redirect('/incorrect_login')
+        return redirect('/incorrect_login')
     return render_template('login.html')
 
 @app.route('/signup',methods=['POST', 'GET'])
@@ -51,12 +65,28 @@ def forgot_password():
 
 @app.route('/')
 def index():
-    # get the user information and list them
     return render_template('index.html')
 
 @app.route('/nfl')
 def nfl():
     return render_template('nfl.html')
+
+@app.route('/incorrect_login', methods = ['GET', 'POST'])
+def incorrect_login():
+    if request.method == 'POST':
+        user_email = request.form['email']
+        user_pass = request.form['password']
+        result = db.session.query(Todo).all()
+        for x in result: 
+            if (x.email == user_email):
+                if (len(user_email) > 0 and len(user_pass) > 0):
+                    if (x.password == user_pass):
+                        return redirect('/')
+                    else:
+                        return redirect('/incorrect_login')
+                else:
+                    return redirect('/incorrect_login')
+    return render_template('incorrect_login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
