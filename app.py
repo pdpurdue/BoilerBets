@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///master.db'
 db = SQLAlchemy(app)
+global_user = ""
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -48,6 +49,9 @@ def login():
             if (x.email == user_email):
                 if (len(user_email) > 0 and len(user_pass) > 0):
                     if (x.password == user_pass):
+                        print(x.fName)
+                        print(x.lName)
+                        global_user = x.fName + x.lName
                         return redirect('/index')
                     else:
                         return render_template('incorrect_login.html')
@@ -84,6 +88,7 @@ def forgot_password():
 
 @app.route('/index')
 def index():
+    print("Global User: " + global_user)
     return render_template('index.html')
 
 @app.route('/nfl')
@@ -100,7 +105,8 @@ def incorrect_login():
             if (x.email == user_email):
                 if (len(user_email) > 0 and len(user_pass) > 0):
                     if (x.password == user_pass):
-                        return redirect('/')
+                        global_user = x.fName + x.lName
+                        return redirect('/index')
                     else:
                         return redirect('/incorrect_login')
                 else:
@@ -118,6 +124,9 @@ def nhl():
 def premier():
     return render_template('premier.html')
 
+@app.route('/bet')
+def bet():
+    return render_template('bet.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
