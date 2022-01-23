@@ -71,7 +71,6 @@ def index():
 def nfl():
     return render_template('nfl.html')
 
-<<<<<<< HEAD
 @app.route('/incorrect_login', methods = ['GET', 'POST'])
 def incorrect_login():
     if request.method == 'POST':
@@ -88,11 +87,9 @@ def incorrect_login():
                 else:
                     return redirect('/incorrect_login')
     return render_template('incorrect_login.html')
-=======
 @app.route('/nba')
 def nba():
     return render_template('nba.html')
->>>>>>> 239abd6779f9a71887418835e855c3fcb65a8d59
 
 if __name__ == '__main__':
     app.run(debug=True)
