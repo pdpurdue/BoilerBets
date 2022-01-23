@@ -1,2 +1,2 @@
 # BoilerBets
-## How to run
+## Steps to run
