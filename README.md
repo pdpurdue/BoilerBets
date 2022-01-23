@@ -1,2 +1,32 @@
 # BoilerBets
+<<<<<<< HEAD
 ## Steps to run
+=======
+This repo has been updated to work with Python v3.7.6 and up.
+## Steps to run
+1. Install virtualenv to create your virtual environment
+
+`pip3 install virtualenv`
+
+2. Construct your virtual environment
+
+`virtualenv env`
+
+3. Activate the virtual environment
+
+`source env/bin/activate`
+
+4. Install the dependencies
+
+`pip install -r requirements.txt`
+
+5. Locally run the Flask application
+
+`python3 app.py`
+
+This server will start on port 5000 by default. You can change this in `app.py` by changing the following line to this:
+```
+if __name__ == "__main__":
+    app.run(debug=True, port=<desired port>)
+```
+>>>>>>> 52096e8c9ff72b6355a1b0964b2e5dfe4f87a8ae
