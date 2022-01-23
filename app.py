@@ -58,5 +58,9 @@ def index():
 def nfl():
     return render_template('nfl.html')
 
+@app.route('/nba')
+def nba():
+    return render_template('nba.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
