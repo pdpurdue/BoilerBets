@@ -91,5 +91,10 @@ def incorrect_login():
 def nba():
     return render_template('nba.html')
 
+@app.route('/premier')
+def premier():
+    return render_template('premier.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
