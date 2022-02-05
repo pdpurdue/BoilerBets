@@ -29,4 +29,3 @@ This server will start on port 5000 by default. You can change this in `app.py` 
 if __name__ == "__main__":
     app.run(debug=True, port=<desired port>)
 ```
->>>>>>> 52096e8c9ff72b6355a1b0964b2e5dfe4f87a8ae
